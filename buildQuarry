@@ -1,0 +1,55 @@
+-- V 1.0 9/4/2014 20:00 Floating 4x Quarry Placement --
+
+local sideSize = 11 --Set this to change the length of the side of the quarry (set it to +1 the size you would like the hole of the quarry to be)
+local spacingBetweenQuads = 4 --Set this to +1 of how many blocks you would like between 
+
+local moveCount = 0
+local rowCount = 0
+local spacingCount = 0
+local quadCount = 0
+
+function moveRow()
+	while moveCount < sideSize do
+		turtle.forward()
+		moveCount = moveCount + 1
+		--print("moveCount: "..moveCount)
+	end
+	turtle.select(1)
+	turtle.placeDown()
+	rowCount = rowCount + 1
+	--print("rowCount: "..rowCount)
+	moveCount = 0
+end
+
+--Creates quadrant
+function createQuad()
+	while rowCount < 4 do
+		moveRow()
+		if rowCount < 4 then
+			turtle.turnLeft()
+		end
+		print("Row "..rowCount.." done!")
+	end
+	rowCount = 0
+end
+
+--Moves turtle to set up next quadrant
+function nextQuad()
+	while spacingCount < spacingBetweenQuads do
+		turtle.forward()
+		spacingCount = spacingCount + 1
+	end
+	spacingCount = 0
+end
+
+
+print("Creating a quarry layout of "..(sideSize-1).." blocks and a spacing of "..spacingBetweenQuads)
+
+while quadCount < 4 do
+	createQuad()
+	nextQuad()
+	quadCount = quadCount + 1
+	--print("quadCount: "..quadCount)
+end
+
+print("Quarry layout complete.")

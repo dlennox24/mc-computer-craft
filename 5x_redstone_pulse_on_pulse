@@ -1,0 +1,29 @@
+-- V 1.0 (8/5/2013 7:10pm)--
+-- 5x Redstone Pulse on Pulse -- 
+
+local outputPulse = 0
+
+
+local function repeatOutput()
+	repeat
+		redstone.setOutput('right', true)
+		os.sleep(.5)
+		redstone.setOutput('right', false)
+		os.sleep(.5)
+		outputPulse = outputPulse + 1
+		print ("Output Pulse: " , outputPulse)
+	until outputPulse == 5
+	outputPulse = 0
+	print ("Output Pulse Reset to: " , outputPulse)
+end
+
+local function detectInput()
+	while true do
+		os.pullEvent('redstone')
+		if rs.getInput('left') then
+			repeatOutput()
+		end
+	end
+end
+
+detectInput()

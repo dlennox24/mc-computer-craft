@@ -1,0 +1,81 @@
+-- V 1.0 (7/31/2013 9:40pm)--
+
+local l = 9 --width of mine
+local w = 9 --depth of mine
+local x = 0
+local y = 0
+local u = 0
+
+
+local function digVert()
+	while turtle.detectUp() == true do
+		turtle.digUp()
+		sleep(.5)
+	end
+	turtle.digDown()
+	x = x + 1
+end
+
+
+local function detectDigFwd()
+	while turtle.detect() == true do
+		turtle.dig()
+		sleep(.5)  
+	end
+	turtle.forward()
+end
+
+
+local function startUp()
+	repeat
+		digVert()
+		detectDigFwd()
+		u = u + 1
+	until u == l
+end
+	
+	
+local function turnLeft()
+	if x == l then
+		turtle.turnLeft()
+		digVert()
+		detectDigFwd()
+		digVert()
+		turtle.turnLeft()
+		x = 0
+		y = y + 1
+	end
+end
+
+local function turnRight()
+	if x == l then
+		turtle.turnRight()
+		digVert()
+		detectDigFwd()
+		digVert()
+		turtle.turnRight()
+		x = 0
+		y = y + 1
+	end
+end
+
+local function repeatDig()
+	while x < l do
+		digVert()
+		detectDigFwd()
+		print(x)
+	end
+end
+
+
+local function fullDig()
+	while y < w do	
+		repeatDig()
+		turnRight()
+		repeatDig()
+		turnLeft()
+	end
+end
+
+startUp()
+fullDig()

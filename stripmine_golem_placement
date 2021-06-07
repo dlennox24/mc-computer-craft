@@ -1,0 +1,51 @@
+-- V 1.2 (8/2/2013 11:10pm)--
+-- Stripmine Golem Placement -- 
+
+local x = 0
+local u = 0
+local f = 0
+
+local function moveFwd()
+	repeat
+		turtle.forward()
+		u = u + 1
+	until u == 19
+	u = 0
+	
+end
+
+local function digPlaceRight()
+	turtle.turnRight()
+	turtle.forward()
+	turtle.down()
+	turtle.digDown()
+	turtle.select(1)
+	turtle.placeDown()
+	turtle.up()
+	turtle.select(2)
+	turtle.placeDown()
+	turtle.back()
+	turtle.turnLeft()
+end
+
+local function digPlaceLeft()
+	turtle.turnLeft()
+	turtle.forward()
+	turtle.down()
+	turtle.digDown()
+	turtle.select(1)
+	turtle.placeDown()
+	turtle.up()
+	turtle.select(2)
+	turtle.placeDown()
+	turtle.back()
+	turtle.turnRight()
+end
+
+
+repeat
+	moveFwd()
+	digPlaceRight()
+	digPlaceLeft()
+	f = f + 1
+until f == 3

@@ -1,0 +1,17 @@
+--V 1.1 1/4/2014--
+
+turtle.dropDown()
+
+while true do
+
+  if redstone.getInput("right") then
+    print()
+    turtle.suck()
+    print("Items collected")
+    sleep(.1)
+    turtle.dropDown()
+    print("Items dropped")
+  else
+    sleep(.1)
+  end
+end

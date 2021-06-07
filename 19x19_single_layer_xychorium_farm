@@ -1,0 +1,117 @@
+-- V 1.0 (8/3/2013 4:10pm)--
+-- Xychorium Farm -- 
+
+local x = 0
+local y = 0
+local f = 0
+local b = 0
+
+local function placeDown()
+	while x < 19 do
+		turtle.select(1)
+			repeat
+				turtle.placeDown()
+				x = x + 1
+				print ("x =     " , x)
+				turtle.forward()
+			until x == 9
+			turtle.forward()
+			x = x + 1
+			repeat
+				turtle.placeDown()
+				x = x + 1
+				print ("x =     " , x)
+				turtle.forward()
+			until x == 19
+	end
+end
+
+local function getMaterials()
+	turtle.turnRight()
+	repeat
+		turtle.forward()
+		f = f + 1
+	until f == y 
+	turtle.select(1)
+	turtle.drop()
+	turtle.suckDown(36)
+	turtle.turnRight()
+	turtle.turnRight()
+	repeat
+		turtle.forward()
+		b = b + 1
+	until b == f + 1
+	turtle.turnLeft()
+	turtle.forward()
+	x = 0
+	y = y + 1
+	f = 0
+	b = 0
+end
+	
+local function turnRight()
+	if x == 19 then
+		turtle.turnRight()
+		turtle.forward()
+		turtle.turnRight()
+		turtle.forward()
+		x = 0
+		y = y + 1
+		print ("y =         " , y)
+	end
+end
+
+local function turnLeft()
+	if x == 19 then
+		turtle.turnLeft()
+		turtle.forward()
+		turtle.turnLeft()
+		turtle.forward()
+		x = 0
+		y = y + 1
+		print ("y =         " , y)
+	end
+end
+
+local function placeEnder()
+	repeat
+		turtle.forward()
+		x = x + 1
+		print ("x =     " , x)
+	until x == 9
+	turtle.select(2)
+	turtle.placeDown()
+	turtle.forward()
+	x = 10
+	repeat
+		turtle.forward()
+		x = x + 1
+		print ("x =     " , x)
+	until x == 19
+end
+
+
+
+repeat
+	placeDown()
+	turnRight()
+	placeDown()
+	getMaterials()
+until y == 8
+
+placeDown()
+turnRight()
+
+placeEnder()
+turnLeft()
+
+y = 0
+
+repeat
+	placeDown()
+	turnRight()
+	placeDown()
+	getMaterials()
+until y == 8
+
+placeDown()

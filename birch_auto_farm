@@ -1,0 +1,72 @@
+--V1.1 1/6/2014--
+
+print("Tree farm started...")
+
+function moveFwd()
+  turtle.dig()
+  turtle.forward()
+  turtle.dig()
+  turtle.forward()
+  turtle.dig()
+  turtle.forward()
+end
+
+function digToTop()
+  turtle.digUp()
+  turtle.up()
+  turtle.digUp()
+  turtle.up()
+  turtle.digUp()
+end
+
+function digToBottom()
+  turtle.down()
+  turtle.down()
+  turtle.digDown()
+  turtle.down()
+  turtle.digDown()
+end
+
+function reset()
+  turtle.select(1)
+  turtle.placeDown()
+  turtle.up()
+  turtle.back()
+  turtle.back()
+  turtle.select(2)
+  turtle.dropDown()
+  turtle.select(3)
+  turtle.dropDown()
+  turtle.select(1)
+  turtle.back()
+end
+
+function retrieveSaplings()
+	turtle.turnRight()
+	turtle.turnRight()
+	turtle.select(1)
+	turtle.suck()
+	turtle.turnLeft()
+	turtle.turnLeft()
+end
+
+function getSaplings()
+  turtle.select(1)
+  neededSaplings = turtle.getItemSpace()
+  
+  if neededSaplings < 1 then
+	retrieveSaplings()
+  end
+end
+
+while true do
+  if turtle.detect() == true then
+    print("Tree detected")
+    moveFwd()
+    digToTop()
+    digToBottom()
+    reset()
+  else
+    sleep(60)
+  end
+end
