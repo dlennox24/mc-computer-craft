@@ -74,7 +74,7 @@ local function dropAll()
 	while itemSlot <= 16 do
 		turtle.select(itemSlot)
 		turtle.drop()
-		itemslot = itemslot + 1
+		itemSlot = itemSlot + 1
 	end
 end
 
@@ -137,9 +137,9 @@ while validDir do
 		end
 	elseif (dirInput == "r") or (dirInput == "l") then
 		print("Depth: ")
-		w = read()
+		w =tonumber(read())
 		print("Number of Rows: ")
-		l = read()
+		l = tonumber(read())
 		print("\nUsing the following inputs:\nTurn: "..dir.."\nDepth: "..w.."\nRows: "..l.."\n")
 		print("Continue? (y/n)")
 		exe = string.lower(read())
