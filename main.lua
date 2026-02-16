@@ -1,12 +1,16 @@
-local state = require("state")
-local move = require("movement")
+local state = require("lib.state")
+local move = require("lib.movement")
+local fuel = require("fuel")
+local inventory = require("inventory")
 
 state.load()
+move.load()
+fuel.load()
+inventory.load()
 
 local WIDTH = 16
 local DEPTH = 16
-local fuel = require("fuel")
-local inventory = require("inventory")
+
 
 
 local function mineLayer()
