@@ -67,11 +67,11 @@ end
 
 local function quarry()
     
-    local estimatedMoves = 16 * 16 * 20  -- rough estimate
-    if not fuel.ensure(estimatedMoves) then
-        print("Not enough fuel.")
-        return
-    end
+    -- local estimatedMoves = 16 * 16 * 20  -- rough estimate
+    -- if not fuel.ensure(estimatedMoves) then
+    --     print("Not enough fuel.")
+    --     return
+    -- end
     
     while true do
         mineLayer()
