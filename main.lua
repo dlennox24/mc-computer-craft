@@ -7,9 +7,6 @@ local fuel = require("lib/fuel")
 local inventory = require("lib/inventory")
 
 state.load()
-move.load()
-fuel.load()
-inventory.load()
 
 local WIDTH = 16
 local DEPTH = 16
