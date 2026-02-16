@@ -1,7 +1,10 @@
-local state = require("lib.state")
-local move = require("lib.movement")
-local fuel = require("fuel")
-local inventory = require("inventory")
+--tell the turtle EXACTLY where to look
+package.path = package.path .. ";/lib/?.lua;/lib/?/init.lua"
+
+local state = require("lib/state")
+local move = require("lib/movement")
+local fuel = require("lib/fuel")
+local inventory = require("lib/inventory")
 
 state.load()
 move.load()
